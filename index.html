@@ -21,22 +21,22 @@
       <div class="main__inputs">
         <div class="main__group">
           <label for="bill" class="main__label">Bill</label>
-          <input type="text" id="bill" class="main__input main__input_bill" min="0" placeholder="0" aria-required="false" pattern="\d{0,}[\.\,]{1,}\d{0,}|\d{0,}" inputmode="numeric"/> <!---->
+          <input type="text" id="bill" class="main__input main__input_bill" min="0" placeholder="0" aria-required="false" pattern="\d*" inputmode="numeric" title="Entry with number decimal or integer"/>
         </div>
         <div class="main__group">
-          <label class="main__label" aria-labelledby="select-tip">Select Tip %</label>
+          <label class="main__label main__label_select-tip" aria-labelledby="select-tip">Select Tip %</label>
           <div class="input__select-tip" role="group" id="select-tip">
             <div class="input__select-option" tabindex="0">5%</div>
             <div class="input__select-option" tabindex="0">10%</div>
             <div class="input__select-option" tabindex="0">15%</div>
             <div class="input__select-option" tabindex="0">25%</div>
             <div class="input__select-option" tabindex="0">50%</div>
-            <input type="text" class="input__select-option input__selection-option_custom" placeholder="Custom" aria-label="Enter a tip percentage value" aria-required="false" pattern="\d{0,}[., ,]{1}\d{0,}/g"/>
+            <input type="text" class="input__select-option input__selection-option_custom" placeholder="Custom" aria-label="Enter a tip percentage value" aria-required="false" inputmode="numeric" pattern="\d*"/>
           </div>
         </div>
         <div class="main__group">
           <label class="main__label" for="number-of-people">Number of People</label>
-          <input type="text" id="number-of-people" min="0" placeholder="0" class="main__input main__input_number-people" aria-required="false" pattern="\d{0,}[., ,]{1}\d{0,}/g"/>
+          <input type="text" id="number-of-people" min="0" placeholder="0" class="main__input main__input_number-people" aria-required="false" inputmode="numeric" pattern="\d*" title="Entry with number integer"/>
         </div>
       </div>
       <div class="main__results">
