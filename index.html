@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="Samuel Amaro Do Nascimento"/>
+  <meta name="description" content="App calculator Tip"/>
+  <meta name="keywords" content="HTML5, CSS3, JS, es6, exe, calculator, tip, app"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png"/>
+  <link rel="stylesheet" href="./css/normalize.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/styles.css" type="text/css"/>
+  <title>Frontend Mentor | Tip calculator app</title>
+</head>
+<body>
+
+  <main class="main">
+    <header class="ilustration">
+      <img src="./images/logo.svg" alt=""/>
+    </header>
+    <div class="main__calculator">
+      <div class="main__inputs">
+        <div class="main__group">
+          <label for="bill" class="main__label">Bill</label>
+          <input type="text" id="bill" class="main__input main__input_bill" min="0" placeholder="0" aria-required="false" pattern="\d{0,}[\.\,]{1,}\d{0,}|\d{0,}" inputmode="numeric"/> <!---->
+        </div>
+        <div class="main__group">
+          <label class="main__label" aria-labelledby="select-tip">Select Tip %</label>
+          <div class="input__select-tip" role="group" id="select-tip">
+            <div class="input__select-option" tabindex="0">5%</div>
+            <div class="input__select-option" tabindex="0">10%</div>
+            <div class="input__select-option" tabindex="0">15%</div>
+            <div class="input__select-option" tabindex="0">25%</div>
+            <div class="input__select-option" tabindex="0">50%</div>
+            <input type="text" class="input__select-option input__selection-option_custom" placeholder="Custom" aria-label="Enter a tip percentage value" aria-required="false" pattern="\d{0,}[., ,]{1}\d{0,}/g"/>
+          </div>
+        </div>
+        <div class="main__group">
+          <label class="main__label" for="number-of-people">Number of People</label>
+          <input type="text" id="number-of-people" min="0" placeholder="0" class="main__input main__input_number-people" aria-required="false" pattern="\d{0,}[., ,]{1}\d{0,}/g"/>
+        </div>
+      </div>
+      <div class="main__results">
+        <div class="main__group">
+          <p class="main__label-result">Tip Amount <br/> <span>/ person</span></p>
+          <div class="main__input-result" aria-live="assertive" aria-atomic="true">$0.00</div>
+        </div>
+        <div class="main__group">
+          <p class="main__label-result">Total <br/> <span>/ person</span></p>
+          <div class="main__input-result" aria-live="assertive" aria-atomic="true">$0.00</div>
+        </div>
+        <div class="main__group">
+          <button type="button" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
