@@ -190,9 +190,7 @@ body{
     color: var(--very-dark-cyan);
 }
 
-.main__input_number-people:invalid{ 
-    outline: #B77F72 solid 2px; 
-}
+.main__input_alert{ outline: #B77F72 solid 2px;  }
 
 .main__number-of-people{ 
     width: auto; 
@@ -205,12 +203,30 @@ body{
     font-size: 16px;
 }
 
+.main__input_bill,
+.input__selection-option_custom,
+.main__input_number-people{
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .row-labels-alerts{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+}
+
+.input__select-option_btn-active{
+    background-color: #2CAEA2;
+    color: var(--very-dark-cyan);
 }
 
 /**BREAKPOINT DESKTOP 934px**/

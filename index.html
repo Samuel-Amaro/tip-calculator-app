@@ -21,7 +21,7 @@
       <div class="main__inputs">
         <div class="main__group">
           <label for="bill" class="main__label">Bill</label>
-          <input type="text" id="bill" class="main__input main__input_bill" min="0" placeholder="0" aria-required="false" inputmode="numeric" pattern="\d*" title="Entry with number decimal or integer"/>
+          <input type="number" id="bill" class="main__input main__input_bill" min="0" placeholder="0" aria-required="false" inputmode="numeric" title="Entry with number decimal or integer"/><!--pattern="\d*"-->
         </div>
         <div class="main__group">
           <label class="main__label main__label_select-tip" aria-labelledby="select-tip">Select Tip %</label>
@@ -31,15 +31,14 @@
             <div class="input__select-option" tabindex="0">15%</div>
             <div class="input__select-option" tabindex="0">25%</div>
             <div class="input__select-option" tabindex="0">50%</div>
-            <input type="text" class="input__select-option input__selection-option_custom" placeholder="Custom" aria-label="Enter a tip percentage value" aria-required="false" inputmode="numeric" pattern="\d*"/>
+            <input type="number" class="input__select-option input__selection-option_custom" placeholder="Custom" aria-label="Enter a tip percentage value" aria-required="false" inputmode="numeric" min="0"/><!--pattern="\d*"-->
           </div>
         </div>
         <div class="main__group">
           <div class="row-labels-alerts">
             <label class="main__label main__number-of-people" for="number-of-people">Number of People</label>
-            <!--<p alert="role" aria-relevant="all" class="feedback-input">Can't be zero</p>-->
           </div>
-          <input type="text" id="number-of-people" min="1" placeholder="0" class="main__input main__input_number-people" aria-required="false" inputmode="numeric" pattern="\d*" title="Entry with number integer"/>
+          <input type="number" id="number-of-people" min="1" placeholder="0" class="main__input main__input_number-people" aria-required="false" inputmode="numeric" title="Entry with number integer"/><!--pattern="\d*"-->
         </div>
       </div>
       <div class="main__results">
@@ -58,5 +57,6 @@
     </div>
   </main>
 
+  <script src="./js/script.js"></script>
 </body>
 </html>
