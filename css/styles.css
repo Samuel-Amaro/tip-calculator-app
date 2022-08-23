@@ -36,25 +36,31 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 45px 0;
+    margin: 48px 0 42px 0;
 }
 
 .main__calculator{ 
     background-color: var(--white); 
-    padding: 32px 32px;
+    padding: 35px 0;
     border-radius: 20px;
+}
+
+.main__inputs{
+    margin: 0 32px;
 }
 
 .main__results{ 
     background-color: var(--very-dark-cyan);
     padding: 40px 23px 20px 23px;
+    border-radius: 15px;
+    margin: 0 25px;
 }
 
 .main__label{ 
     color: var(--dark-grayish-cyan);
     font-weight: 700;
     font-size: 16px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .main__input{
@@ -62,10 +68,12 @@ body{
     font-size: 24px;
     color: var(--very-dark-cyan);
     text-align: right;
-    padding: 5px 18px;
+    padding: 6px 18px;
     border: none;
     border-radius: 4px;
 }
+
+.main__input::placeholder{ color: var(--dark-grayish-cyan); }
 
 .main__group:nth-of-type(1), 
 .main__group:nth-of-type(2),
@@ -81,7 +89,7 @@ body{
     background-color: var(--very-dark-cyan);
     color: var(--very-light-grayish-cyan);
     text-align: center;
-    font-size: 24px;
+    font-size: 1.5rem; /*24px*/
     padding: 10px 0;
     border-radius: 4px;
 }
@@ -98,12 +106,12 @@ body{
     color: var(--very-dark-cyan);
 }
 
-.input__selection-option_custom::placeholder{ color: var(--very-dark-cyan); }
+.input__selection-option_custom::placeholder{ color: hsl(183, 100%, 15%); }
 
 .input__select-tip{
     display: grid;
     grid-template-columns: repeat(2, minmax(min-content, 150px));
-    grid-auto-rows: 46px;
+    grid-auto-rows: 47.6px;
     gap: 15px 18px;
 }
 
@@ -142,12 +150,121 @@ body{
     margin-bottom: 30px;
 }
 
-.main__results .main__group:nth-of-type(3){
-    margin-bottom: 0;
-}
+.main__results .main__group:nth-of-type(2){ margin-bottom: 35px; }
+
+.main__results .main__group:nth-of-type(3){ margin-bottom: 0; }
 
 .main__input-result{
     color: var(--strong-cyan);
     font-weight: 700;
     font-size: 34px;
+}
+
+.btn-reset{
+    border: none;
+    background-color: var(--strong-cyan);
+    font-size: 20px;
+    text-transform: uppercase;
+    color: var(--very-dark-cyan);
+    padding: 13px 0 13px 0;
+    border-radius: 5px;
+}
+
+/***ACTIVE STATES***/
+
+.main__input:focus,
+.input__selection-option_custom:focus{
+    outline: #57A99D solid 2px; 
+}       
+
+.main__input:hover,
+.input__selection-option_custom:hover{
+    outline: #57A99D solid 2px;
+    cursor: pointer;
+}
+
+.input__select-option:nth-child(-n+5):hover,
+.btn-reset:hover{
+    cursor: pointer;
+    background-color: #9FE8DD;
+    color: var(--very-dark-cyan);
+}
+
+.main__input_number-people:invalid{ 
+    outline: #B77F72 solid 2px; 
+}
+
+.main__number-of-people{ 
+    width: auto; 
+    margin-bottom: 0; 
+}
+
+.feedback-input{
+    color: #ca8077;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.row-labels-alerts{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/**BREAKPOINT DESKTOP 934px**/
+@media screen and (min-width: 934px) {
+    body{
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+    }
+
+    .ilustration{ margin: 160px 0 90px 0; }
+
+    .main{ 
+        max-width: none;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+
+    .main__inputs,
+    .main__results{ margin: 0; }
+
+    .main__calculator{
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: center;
+        column-gap: 45px;
+        padding: 30px 30px 30px 45px;
+        max-width: 900px;
+        margin-bottom: 240px;
+    }
+
+    .input__select-tip{
+        grid-template-columns: repeat(3, minmax(min-content, 115px));
+        gap: 15px 15px;
+    }
+
+    .input__selection-option_custom{ padding: 0 13px; }
+
+    .main__group:nth-of-type(1), 
+    .main__group:nth-of-type(2){
+        margin-bottom: 40px; }
+
+    .main__group:nth-of-type(3){ margin-bottom: 0; }
+
+    .main__results{  padding: 52px 40px 35px 40px; }
+
+    .main__results .main__group:nth-of-type(1){ margin-bottom: 45px; }
+
+    .main__results .main__group:nth-of-type(2) { margin-bottom: 130px; }
+
+    .main__results .main__group:nth-of-type(1), 
+    .main__results .main__group:nth-of-type(2) { gap: 80px; }
+
+    .main__input-result{ font-size: 46px; }
 }
