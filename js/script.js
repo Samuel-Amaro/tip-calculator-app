@@ -2,6 +2,7 @@
 
 let allInputs = document.querySelectorAll('input[type="number"]');
 let allSelectsTipPercentage = document.querySelectorAll(".input__select-option");
+let btnReset = document.querySelector(".btn-reset");
 
 function addAlert() {
     let alert = document.querySelector(".feedback-input");
@@ -29,28 +30,78 @@ function removeAlert() {
 
 function handlerInput(event) {
     if(event.target.value) {
-        if(event.target.classList.contains("main__input_number-people") && event.target.value === '0'){ 
-            addAlert();
-        }else if(event.target.classList.contains("main__input_number-people") && parseInt(event.target.value) > 0)
+        if(parseInt(event.target.value) > 0) {
             removeAlert();
-        console.log('Number: ' + event.target.value);
+            let tip = getValuesTip();
+            setValuesTip(tip.bill, tip.tipPercentage, tip.numberPeople);
+        }else if(event.target.classList.contains("main__input_number-people") && parseInt(event.target.value) === 0)
+            addAlert();
     }
 }
 
 function handlerActiveSelectTip(event) {
     if(!event.target.classList.contains("input__select-option_btn-active")) { 
-        for(let selectTip of document.querySelectorAll(".input__select-option_btn-active")) {
+        for(let selectTip of document.querySelectorAll(".input__select-option_btn-active"))
             selectTip.classList.remove("input__select-option_btn-active");
-        }
         event.target.classList.add("input__select-option_btn-active");
+        let tip = getValuesTip();
+        setValuesTip(tip.bill, tip.tipPercentage, tip.numberPeople);
     }
 }
 
-//TODO: implementar function que limpa campos de resultado
-//TODO: implementar um estado inativo inicial do button e depois implementar o estado ativo, isso e dinamico a cada click
-
 function clearFieldsResults(event) {
+    document.querySelector(".main__input-result-tip-amount").innerHTML = "$0.00";
+    document.querySelector(".main__input-result-total").innerHTML = "$0.00";
+    inactiveButtonReset();
+}
 
+function activeButtonReset() {
+    if(document.querySelector(".btn-reset").classList.contains("btn-reset__inactive")) {
+        document.querySelector(".btn-reset").classList.remove("btn-reset__inactive");
+        document.querySelector(".btn-reset").classList.add("input__select-option_btn-active");
+    }
+}
+
+function inactiveButtonReset() {
+    if(document.querySelector(".btn-reset").classList.contains("input__select-option_btn-active")) {
+        document.querySelector(".btn-reset").classList.remove("input__select-option_btn-active");
+        document.querySelector(".btn-reset").classList.add("btn-reset__inactive");
+    }
+}
+
+function setValuesTip(bill, percentageTip, numberPeople) {
+    let resultTipAmount = document.querySelector(".main__input-result-tip-amount");
+    let resultTotal = document.querySelector(".main__input-result-total");
+    if(bill === 0 || percentageTip === 0 || numberPeople === 0) {
+        resultTipAmount.innerHTML = resultTipAmount.innerHTML;
+        resultTotal.innerHTML = resultTotal.innerHTML;
+    }else{
+        let tipAmount = bill * (percentageTip / 100) / numberPeople;
+        let totalPerPeople = (bill + (bill * (percentageTip / 100))) / numberPeople;
+        if(isNaN(tipAmount) || isNaN(totalPerPeople)) {
+            resultTipAmount.innerHTML = "$0.00";
+            resultTotal.innerHTML = "$0.00";
+            inactiveButtonReset();
+        }else{
+            resultTipAmount.innerHTML = "$" + tipAmount.toFixed(2);
+            resultTotal.innerHTML = "$" + totalPerPeople.toFixed(2);
+            activeButtonReset();
+        }
+    }
+}
+
+function getValuesTip() {
+    let billElem = document.querySelector(".main__input_bill");
+    let selectTipElem = document.querySelector(".input__select-option_btn-active");
+    let valueTipPercen = 0;
+    if(selectTipElem) 
+        valueTipPercen = selectTipElem.value ?? selectTipElem.textContent;
+    let numberPeopleElem = document.querySelector(".main__input_number-people");
+    return {
+        bill : parseFloat(billElem.value),
+        tipPercentage : parseFloat(valueTipPercen),
+        numberPeople : parseFloat(numberPeopleElem.value) 
+    };
 }
 
 allInputs.forEach((inputElem) => {
@@ -61,9 +112,6 @@ allSelectsTipPercentage.forEach((selectTip) => {
     selectTip.addEventListener("pointerdown", handlerActiveSelectTip);
 });
 
-//TODO: implementar function de calcular quantidade total da gorjeta por pessoa
-//TODO: implementar uma function que mostre o resultado dos calculos ao vivo a cada nova entrada de valor recebida, boa parte da estrutura do codigo esta pronta basta, so realizar calculo e atualizar campos a cada modificação.
-function calcTip(bill, percentageTip, numberPeople) {
+btnReset.addEventListener("pointerdown", clearFieldsResults);
 
-}
 
